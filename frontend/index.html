@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <input type="text" name="number1" id="number1" value = "10">
+      <input type="text" name="number2" id="number2" value = "20">
+      <button>Sum</button>
+     <div id="result"></div>
+
+     <script>
+         const number1 = document.getElementById('number1');
+        const number2 = document.getElementById('number2');
+        const button = document.querySelector('button');
+        const result = document.getElementById('result');
+
+        button.addEventListener('click', () => {
+            body= {
+                number1: number1.value,
+                number2: number2.value
+            }
+           fetch("http://localhost:5000/sum",
+             {
+                 method: "post",
+                 headers: {
+                        "Content-Type": "application/json"
+                 },
+                 body: JSON.stringify(body)
+             }
+           
+           )
+           .then(response =>response.json())
+           .then( (response) =>{ console.log(response.sum)}
+           ) 
+        })
+
+        // p1.then().then()
+        // str.split().reverse()
+        
+
+
+
+
+     </script>
+      
+      
+
+
+</body>
+</html>
